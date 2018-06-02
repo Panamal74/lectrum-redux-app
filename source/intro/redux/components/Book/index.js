@@ -1,10 +1,16 @@
 // Core
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 // Instruments
 import Styles from './styles.m.css';
+import { store } from "../../store";
+import { changePage } from "../../../redux/actions/book";
 
-export default class Book extends Component {
+console.log('store', store);
+window.x = store;
+
+export class Book extends Component {
     static defaultProps = {
         currentPage: '5',
         totalPages:  '898',
@@ -12,11 +18,18 @@ export default class Book extends Component {
     };
 
     _changePage = (event) => {
+        // this.props.dispatch(changePage(event.target.value));
         this.props.changePage(event.target.value);
+        // store.dispatch(changePage(event.target.value));
+        // this.forceUpdate();
     };
 
     render () {
         const { currentPage, totalPages, title } = this.props;
+
+        // const currentPage = store.getState().book.currentPage;
+
+        console.log('currentPage: ', currentPage);
 
         const pagesToSelect = [...Array(Number(totalPages)).keys()].map((page) => (
             <option key = { page }>{page}</option>
@@ -110,3 +123,20 @@ export default class Book extends Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        title:       state.book.title,
+        currentPage: state.book.currentPage,
+        totalPages:  state.book.totalPages,
+    };
+};
+
+const mapDispathToProps = {
+    changePage,
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispathToProps,
+)(Book);
