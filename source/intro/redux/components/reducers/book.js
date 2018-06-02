@@ -10,7 +10,7 @@ const initialState = {
 export const bookReducer = (state = initialState, action) => {
     switch (action.type) {
         case CHANGE_PAGE:
-            return { ...state, currentPage: action.payload};
+            return { ...state, currentPage: action.payload };
 
         default:
             return state;
