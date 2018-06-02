@@ -1,18 +1,18 @@
 // Core
 import React from 'react';
 import { render } from 'react-dom';
-// import { Provider } from 'react-redux';
+import { Provider } from 'react-redux';
 
 // Instruments
 import './theme/init';
-// import { store } from './intro/redux/store';
+import { store } from './intro/redux/store';
 
 // Main
-import App from './pages/Feed';
+import Book from './intro/redux';
 
 render(
-    //<Provider store = { store }>
-    <App />,
-    //</Provider>,
+    <Provider store = { store }>
+        <Book />
+    </Provider>,
     document.getElementById('app')
 );
