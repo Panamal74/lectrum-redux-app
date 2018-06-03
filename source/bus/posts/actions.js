@@ -1,6 +1,8 @@
 // Instruments
 import { types } from "./types";
 
+// debugger;
+//
 export const postsActions = Object.freeze({
     fetchPosts: () => ({
         type: types.FETCH_POSTS,

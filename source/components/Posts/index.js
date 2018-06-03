@@ -6,7 +6,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Styles from './styles.m.css';
 
 // Components
-import { Composer, Catcher, Post, Counter } from 'components';
+import { Composer, Catcher, Post, Counter } from '../../components';
 
 export default class Posts extends Component {
     componentDidMount () {

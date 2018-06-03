@@ -5,17 +5,21 @@ import { fromJS } from 'immutable';
 import { connect } from 'react-redux';
 
 // Components
-import { Spinner, Catcher, Posts } from 'components';
+import { Spinner, Catcher, Posts } from '../components';
 
 import { postsActions } from "../bus/posts/actions";
 
 const mapStateToProps = (state) => {
+    // debugger;
+    //
     return {
         posts: state.posts,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
+    // debugger;
+    //
     return {
         actions: bindActionCreators(
             {
@@ -38,19 +42,24 @@ export default class Feed extends Component {
             id:     '123',
             avatar:
                     'https://img00.deviantart.net/514e/i/2010/010/4/c/jakes_sully__s_eye_avatar_by_phodees.png',
-            firstName: 'Cat',
+            firstName: 'Pasha',
         }),
         actions: {
             fetchPosts: () => {},
             fetchUsers: () => {},
             createPost: () => {},
         },
-        // posts: [],
     };
+
+    // componentDidMount () {
+    //     debugger;
+    // }
 
     render () {
         const { actions, isFeedFetching, profile, posts } = this.props;
 
+        // debugger;
+        //
         return (
             <>
                 <Spinner isSpinning = { isFeedFetching } />
