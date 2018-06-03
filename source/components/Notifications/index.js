@@ -1,8 +1,10 @@
 // Core
 import React from 'react';
+import { connect } from 'react-redux';
+import { notificationsActions } from '../../bus/notification/actions';
 
 // Components
-import Notification from 'components/Notification';
+import Notification from '../../components/Notification';
 
 const Notifications = ({ notifications, hideNotification }) =>
     notifications.map((notification) => (
@@ -13,4 +15,17 @@ const Notifications = ({ notifications, hideNotification }) =>
         />
     ));
 
-export default Notifications;
+const mapStateToProps = (state) => {
+    return {
+        notifications: state.notifications,
+    };
+};
+
+const mapActionsToProps = {
+    hideNotification: notificationsActions.hideNotification,
+};
+
+export default connect(
+    mapStateToProps,
+    mapActionsToProps,
+)(Notifications);

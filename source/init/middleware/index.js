@@ -24,6 +24,7 @@ const middleware = [sagaMiddleware, customThunk, notification];
 
 if (dev) {
     middleware.push(logger);
+    middleware.push(notification);
 }
 
 export { dev, middleware, sagaMiddleware };

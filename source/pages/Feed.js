@@ -5,15 +5,17 @@ import { fromJS } from 'immutable';
 import { connect } from 'react-redux';
 
 // Components
-import { Spinner, Catcher, Posts } from '../components';
+import { Spinner, Catcher, Posts, Notifications } from '../components';
 
 import { postsActions } from "../bus/posts/actions";
+// import Navigation from "../components/Navigation";
 
 const mapStateToProps = (state) => {
     // debugger;
     //
     return {
-        posts: state.posts,
+        isPostsFetching: state.ui.get('isPostsFetching'),
+        posts:           state.posts,
     };
 };
 
@@ -37,8 +39,7 @@ const mapDispatchToProps = (dispatch) => {
 )
 export default class Feed extends Component {
     static defaultProps = {
-        isFeedFetching: false,
-        profile:        fromJS({
+        profile: fromJS({
             id:     '123',
             avatar:
                     'https://img00.deviantart.net/514e/i/2010/010/4/c/jakes_sully__s_eye_avatar_by_phodees.png',
@@ -46,7 +47,7 @@ export default class Feed extends Component {
         }),
         actions: {
             fetchPosts: () => {},
-            fetchUsers: () => {},
+            // fetchUsers: () => {},
             createPost: () => {},
         },
     };
@@ -56,13 +57,14 @@ export default class Feed extends Component {
     // }
 
     render () {
-        const { actions, isFeedFetching, profile, posts } = this.props;
+        const { actions, isPostsFetching, profile, posts } = this.props;
 
         // debugger;
         //
         return (
             <>
-                <Spinner isSpinning = { isFeedFetching } />
+                <Spinner isSpinning = { isPostsFetching } />
+                <Notifications />
                 <Catcher>
                     <Posts actions = { actions } posts = { posts } profile = { profile } />
                 </Catcher>
