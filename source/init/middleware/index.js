@@ -1,5 +1,7 @@
 import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
+import { routerMiddleware as createRouterMiddleware } from 'react-router-redux';
+import { createBrowserHistory } from 'history';
 
 import { customThunk } from './customThunk';
 import { notification } from './notification';
@@ -17,14 +19,15 @@ const logger = createLogger({
 });
 
 const dev = process.env.NODE_ENV === 'development';
-
+const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
+const routerMiddleware = createRouterMiddleware(history);
 
-const middleware = [sagaMiddleware, customThunk, notification];
+const middleware = [sagaMiddleware, customThunk, routerMiddleware];
 
 if (dev) {
     middleware.push(logger);
     middleware.push(notification);
 }
 
-export { dev, middleware, sagaMiddleware };
+export { dev, middleware, sagaMiddleware, history };
