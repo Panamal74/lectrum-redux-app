@@ -8,7 +8,7 @@ import Public from './Public';
 @hot(module)
 export default class Main extends Component {
     static defaultProps = {
-        isAuthenticated: true,
+        isAuthenticated: false,
     };
 
     render () {

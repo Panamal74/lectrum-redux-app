@@ -1,12 +1,30 @@
 // Coret
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import cx from 'classnames';
 
 // Instruments
 import Styles from './styles.m.css';
-import { book } from 'navigation/book';
+import { book } from '../../navigation/book';
+import { authActions } from "../../bus/authentication/actions";
 
+const mapStateToProps = (state) => {
+    return {
+        isAuthenticated: state.authentication.get('isAuthenticated'),
+        isOnline:        state.ui.get('isOnline'),
+        profile:         state.profile,
+    };
+};
+
+const mapActionToProps = {
+    logout: authActions.logout,
+};
+
+@connect(
+    mapStateToProps,
+    mapActionToProps
+)
 export default class Navigation extends Component {
     _getNavigation = () => {
         const { isAuthenticated, profile } = this.props;

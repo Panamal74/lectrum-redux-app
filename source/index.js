@@ -8,6 +8,8 @@ import { ConnectedRouter as Router } from 'react-router-redux';
 import './theme/init';
 import { store, history } from './init/store';
 
+// window.x = history;
+
 // Main
 import Main from './navigation/Main';
 // import App from './pages/Feed';
