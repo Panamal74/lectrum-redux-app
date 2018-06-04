@@ -8,7 +8,7 @@ import Styles from './styles.m.css';
 import { validateEmail, validateLength } from 'instruments/validators';
 
 // Components
-import { Input } from 'components';
+import { Input } from '../../components';
 
 export default class LoginForm extends Component {
     _handleSubmit = (user) => {

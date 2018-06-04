@@ -8,10 +8,6 @@ import { uiActions } from "../../../ui/actions";
 export function* callFetchPostsWorker () {
 
     try {
-        // console.log('saga works');
-        //
-        // throw new Error('New Error!!!');
-        //
         yield put(uiActions.setPostsFetchingState(true));
         const response = yield call(fetch, `${api}/feed`, {
             method:  'GET',
@@ -20,9 +16,8 @@ export function* callFetchPostsWorker () {
             },
         });
 
-        yield delay(2000);
+        yield delay(500);
 
-        // const { data: posts, message } = response.json();
         const { data: posts, message } = yield call([response, response.json]);
 
         if (response.status !== 200) {
