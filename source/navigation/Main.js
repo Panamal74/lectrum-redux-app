@@ -9,6 +9,9 @@ import Public from './Public';
 import { uiActions } from "../bus/ui/actions";
 
 import { Loading } from "../components";
+import { joinSocketChannel } from "../init/socket";
+import { socketActions } from "../bus/socket/actions";
+import { socket } from '../init/socket';
 
 const mapStateToProps = (state) => {
     return {
@@ -19,6 +22,7 @@ const mapStateToProps = (state) => {
 
 const mapActionToProps = {
     initialise: uiActions.initialise,
+    ...socketActions,
 };
 
 @hot(module)
@@ -30,17 +34,25 @@ export default class Main extends Component {
     // };
 
     componentDidMount () {
-        const { initialise } = this.props;
+        const { initialise, listenConnection } = this.props;
 
         initialise();
+        joinSocketChannel();
+        listenConnection();
+    }
+
+    componentWillUnmount () {
+        socket.removeListener('connect');
+        socket.removeListener('disconnect');
     }
 
     render () {
-        const { isAuthenticated, isInitialised } = this.props;
+        const { isAuthenticated, isInitialised, listenPosts } = this.props;
 
         return isInitialised ? (
             <Switch>
-                {isAuthenticated && <Private />}
+                {/*{!isInitialised}*/}
+                {isAuthenticated && <Private listenPosts = { listenPosts } />}
                 <Public />
             </Switch>
         ) : (

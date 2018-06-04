@@ -5,6 +5,7 @@ import { all } from 'redux-saga/effects';
 import { postsWatcher } from "../bus/posts/saga";
 import { authWatcher } from "../bus/authentication/saga";
 import { uiWatcher } from "../bus/ui/saga";
+import { usersWatchers } from "../bus/users/saga";
 
 export function* rootSaga () {
     yield all([
@@ -17,6 +18,7 @@ export function* rootSaga () {
         authWatcher.watchLogin(),
         authWatcher.watchAuthenticate(),
         authWatcher.watchLogout(),
-        uiWatcher.watchInitialise()
+        uiWatcher.watchInitialise(),
+        usersWatchers.watchInitialize()
     ]);
 }

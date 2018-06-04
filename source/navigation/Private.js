@@ -2,10 +2,21 @@ import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router';
 
 import { book } from './book';
+import { socket } from "../init/socket";
 
 import { Feed, Profile, NewPassword } from '../pages';
 
 export default class Private extends Component {
+    componentDidMount () {
+        this.props.listenPosts();
+    }
+
+    componentWillUnmount () {
+        socket.removeListener('create');
+        socket.removeListener('remove');
+        socket.removeListener('like');
+    }
+
     render () {
         return (
             <Switch>

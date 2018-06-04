@@ -10,6 +10,7 @@ import { Navigation } from '../components';
 
 import { postsActions } from "../bus/posts/actions";
 import { postsActionsAsync } from "../bus/posts/saga/asyncActions";
+import { usersActionsAsync } from "../bus/users/saga/asyncActions";
 
 const mapStateToProps = (state) => {
     // debugger;
@@ -32,6 +33,7 @@ const mapDispatchToProps = (dispatch) => {
                 removePostAsync: postsActionsAsync.removePostAsync,
                 likePostAsync:   postsActionsAsync.likePostAsync,
                 unlikePostAsync: postsActionsAsync.unlikePostAsync,
+                fetchUserAsync:  usersActionsAsync.fetchUserAsync,
             },
             dispatch,
         ),
@@ -44,23 +46,6 @@ const mapDispatchToProps = (dispatch) => {
     mapDispatchToProps,
 )
 export default class Feed extends Component {
-    // static defaultProps = {
-    //     profile: fromJS({
-    //         id:     '123',
-    //         avatar:
-    //                 'https://img00.deviantart.net/514e/i/2010/010/4/c/jakes_sully__s_eye_avatar_by_phodees.png',
-    //         firstName: 'Pasha',
-    //     }),
-    //     actions: {
-    //         fetchPosts: () => {},
-    //         fetchUsers: () => {},
-    //         createPost: () => {},
-    //     },
-    // };
-
-    // componentDidMount () {
-    //     debugger;
-    // }
 
     render () {
         const { actions, isPostsFetching, profile, posts } = this.props;
