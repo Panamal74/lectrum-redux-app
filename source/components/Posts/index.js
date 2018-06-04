@@ -45,7 +45,10 @@ export default class Posts extends Component {
 
         return (
             <section className = { Styles.wall }>
-                <Composer createPost = { actions.createPost } profile = { profile } />
+                <Composer
+                    createPostAsync = { actions.createPostAsync }
+                    profile = { profile }
+                />
                 <Counter count = { posts.size } />
                 <TransitionGroup>{posts}</TransitionGroup>
             </section>

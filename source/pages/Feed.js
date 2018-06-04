@@ -9,6 +9,7 @@ import { Spinner, Catcher, Posts, Notifications } from '../components';
 import { Navigation } from '../components';
 
 import { postsActions } from "../bus/posts/actions";
+import { postsActionsAsync } from "../bus/posts/saga/asyncActions";
 // import Navigation from "../components/Navigation";
 
 const mapStateToProps = (state) => {
@@ -26,7 +27,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         actions: bindActionCreators(
             {
-                fetchPosts: postsActions.fetchPosts,
+                fetchPosts:      postsActions.fetchPosts,
+                createPostAsync: postsActionsAsync.createPostAsync,
             },
             dispatch,
         ),

@@ -16,4 +16,9 @@ export const postsActions = Object.freeze({
         payload: error,
         error:   true,
     }),
+    // create
+    createPost: (post) => ({
+        type:    types.CREATE_POST,
+        payload: post,
+    }),
 });

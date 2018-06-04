@@ -9,6 +9,7 @@ import { uiWatcher } from "../bus/ui/saga";
 export function* rootSaga () {
     yield all([
         postsWatcher.watchFetchPosts(),
+        postsWatcher.watchCreatePosts(),
         authWatcher.watchSignup(),
         authWatcher.watchLogin(),
         authWatcher.watchAuthenticate(),

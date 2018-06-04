@@ -21,7 +21,8 @@ export default class Composer extends Component {
             return;
         }
 
-        this.props.createPost(comment);
+        //this.props.createPost(comment);
+        this.props.createPostAsync(comment);
 
         this.setState(() => ({
             comment: '',

@@ -3,6 +3,12 @@ import { types } from "./types";
 // debugger;
 //
 export const uiActions = Object.freeze({
+    emitError: (error, meta = null) => ({
+        type:    types.EMIT_ERROR,
+        payload: error,
+        error:   true,
+        meta,
+    }),
     initialise: () => ({
         type: types.INITIALISE,
     }),
