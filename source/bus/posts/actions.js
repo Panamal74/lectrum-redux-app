@@ -21,4 +21,25 @@ export const postsActions = Object.freeze({
         type:    types.CREATE_POST,
         payload: post,
     }),
+    // remove
+    removePost: (id) => ({
+        type:    types.REMOVE_POST,
+        payload: id,
+    }),
+    // like
+    likePost: (liker, postId) => ({
+        type:    types.LIKE_POST,
+        payload: {
+            liker,
+            postId,
+        },
+    }),
+    // unlike
+    unlikePost: (likerId, postId) => ({
+        type:    types.UNLIKE_POST,
+        payload: {
+            likerId,
+            postId,
+        },
+    }),
 });

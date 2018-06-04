@@ -1,7 +1,7 @@
 // Core
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { fromJS } from 'immutable';
+// import { fromJS } from 'immutable';
 import { connect } from 'react-redux';
 
 // Components
@@ -10,7 +10,6 @@ import { Navigation } from '../components';
 
 import { postsActions } from "../bus/posts/actions";
 import { postsActionsAsync } from "../bus/posts/saga/asyncActions";
-// import Navigation from "../components/Navigation";
 
 const mapStateToProps = (state) => {
     // debugger;
@@ -18,6 +17,7 @@ const mapStateToProps = (state) => {
     return {
         isPostsFetching: state.ui.get('isPostsFetching'),
         posts:           state.posts,
+        profile:         state.profile,
     };
 };
 
@@ -29,6 +29,9 @@ const mapDispatchToProps = (dispatch) => {
             {
                 fetchPosts:      postsActions.fetchPosts,
                 createPostAsync: postsActionsAsync.createPostAsync,
+                removePostAsync: postsActionsAsync.removePostAsync,
+                likePostAsync:   postsActionsAsync.likePostAsync,
+                unlikePostAsync: postsActionsAsync.unlikePostAsync,
             },
             dispatch,
         ),
@@ -41,19 +44,19 @@ const mapDispatchToProps = (dispatch) => {
     mapDispatchToProps,
 )
 export default class Feed extends Component {
-    static defaultProps = {
-        profile: fromJS({
-            id:     '123',
-            avatar:
-                    'https://img00.deviantart.net/514e/i/2010/010/4/c/jakes_sully__s_eye_avatar_by_phodees.png',
-            firstName: 'Pasha',
-        }),
-        actions: {
-            fetchPosts: () => {},
-            // fetchUsers: () => {},
-            createPost: () => {},
-        },
-    };
+    // static defaultProps = {
+    //     profile: fromJS({
+    //         id:     '123',
+    //         avatar:
+    //                 'https://img00.deviantart.net/514e/i/2010/010/4/c/jakes_sully__s_eye_avatar_by_phodees.png',
+    //         firstName: 'Pasha',
+    //     }),
+    //     actions: {
+    //         fetchPosts: () => {},
+    //         fetchUsers: () => {},
+    //         createPost: () => {},
+    //     },
+    // };
 
     // componentDidMount () {
     //     debugger;

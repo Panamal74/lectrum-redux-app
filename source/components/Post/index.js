@@ -6,7 +6,7 @@ import moment from 'moment';
 import Styles from './styles.m.css';
 
 // Components
-import Like from 'components/Like';
+import Like from '../../components/Like';
 
 export default class Post extends Component {
     _getCross = () => {
@@ -20,7 +20,8 @@ export default class Post extends Component {
     _removePost = () => {
         const { actions, id } = this.props;
 
-        actions.removePost(id);
+        // actions.removePost(id);
+        actions.removePostAsync(id);
     };
 
     render () {

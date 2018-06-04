@@ -20,6 +20,11 @@ export function* callAuthenticateWorker ({ payload: token }) {
         const { data: profile, message } = yield call([response, response.json]);
 
         if (response.status !== 200) {
+            if (response.status === 401) {
+                yield localStorage.removeItem('token');
+
+                return null;
+            }
             throw new Error(message);
         }
 
