@@ -8,7 +8,7 @@ import {
     Navigation,
     Catcher,
     ProfileForm
-} from 'components';
+} from '../components';
 
 export default class Profile extends Component {
     render () {

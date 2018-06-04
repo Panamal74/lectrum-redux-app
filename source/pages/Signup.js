@@ -29,13 +29,15 @@ const mapActionToProps = {
 )
 export default class Signup extends Component {
     render () {
+        const { isAuthFetching } = this.props;
+
         return (
             <>
                 <Notifications />
-                <Spinner />
+                <Spinner isSpinning = { isAuthFetching } />
                 <Navigation />
                 <Catcher>
-                    <SignupForm />
+                    <SignupForm { ...this.props } />
                 </Catcher>
             </>
         );

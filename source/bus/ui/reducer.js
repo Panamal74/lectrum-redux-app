@@ -6,6 +6,7 @@ const initialState = Map({
     isOnline:        false,
     isPostsFetching: false,
     isAuthFetching:  false,
+    isInitialised:   false,
 });
 
 export const uiReducer = (state = initialState, action) => {
@@ -15,6 +16,9 @@ export const uiReducer = (state = initialState, action) => {
 
         case types.SET_POSTS_FETCHING_STATE:
             return state.set('isPostsFetching', action.payload);
+
+        case types.INITIALISE_SUCCESS:
+            return state.set('isInitialised', true);
 
         case types.SET_AUTH_FETCHING_STATE:
             return state.set('isAuthFetching', action.payload);

@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 // Components
 import { Spinner, Catcher, Posts, Notifications } from '../components';
+import { Navigation } from '../components';
 
 import { postsActions } from "../bus/posts/actions";
 // import Navigation from "../components/Navigation";
@@ -64,6 +65,7 @@ export default class Feed extends Component {
         return (
             <>
                 <Spinner isSpinning = { isPostsFetching } />
+                <Navigation />
                 <Notifications />
                 <Catcher>
                     <Posts actions = { actions } posts = { posts } profile = { profile } />
