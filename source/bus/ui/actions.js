@@ -27,4 +27,20 @@ export const uiActions = Object.freeze({
         type:    types.SET_ONLINE_STATE,
         payload: isOnline,
     }),
+    setProfileFetchingState: (state) => ({
+        type:    types.SET_PROFILE_FETCHING_STATE,
+        payload: state,
+    }),
+    setProfileEditingState: (state) => ({
+        type:    types.SET_PROFILE_EDITING_STATE,
+        payload: state,
+    }),
+    setAvatarFetchingState: (state) => ({
+        type:    types.SET_AVATAR_FETCHING_STATE,
+        payload: state,
+    }),
+    setPasswordEditingState: (state) => ({
+        type:    types.SET_PASSWORD_EDITING_STATE,
+        payload: state,
+    }),
 });

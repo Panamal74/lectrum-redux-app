@@ -1,4 +1,5 @@
 import { call, put, delay } from 'redux-saga/effects';
+import { actions } from 'react-redux-form';
 
 import { api } from '../../../../config';
 import { authActions } from '../../../../bus/authentication/actions';
@@ -34,6 +35,8 @@ export function* callAuthenticateWorker ({ payload: token }) {
 
         yield localStorage.setItem('token', profile.token);
         yield put(profileActions.fillProfile(profile));
+        yield put(actions.change('forms.user.profile.firstName', profile.firstName));
+        yield put(actions.change('forms.user.profile.lastName', profile.lastName));
     } catch (error) {
         yield put(authActions.authenticateFail(error));
     } finally {

@@ -10,4 +10,8 @@ export const profileActions = Object.freeze({
     clearProfile: () => ({
         type: types.CLEAR_PROFILE,
     }),
+    updateAvatar: (avatar) => ({
+        type:    types.UPDATE_AVATAR,
+        payload: avatar,
+    }),
 });

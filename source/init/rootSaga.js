@@ -6,6 +6,7 @@ import { postsWatcher } from "../bus/posts/saga";
 import { authWatcher } from "../bus/authentication/saga";
 import { uiWatcher } from "../bus/ui/saga";
 import { usersWatchers } from "../bus/users/saga";
+import { profileWatchers } from "../bus/profile/saga";
 
 export function* rootSaga () {
     yield all([
@@ -19,6 +20,8 @@ export function* rootSaga () {
         authWatcher.watchAuthenticate(),
         authWatcher.watchLogout(),
         uiWatcher.watchInitialise(),
-        usersWatchers.watchInitialize()
+        usersWatchers.watchInitialize(),
+        profileWatchers.watchUpdateProfileUsers(),
+        profileWatchers.watchUpdateAvatarUsers()
     ]);
 }

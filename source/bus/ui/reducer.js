@@ -3,10 +3,12 @@ import { Map } from 'immutable';
 import { types } from './types';
 
 const initialState = Map({
-    isOnline:        false,
-    isPostsFetching: false,
-    isAuthFetching:  false,
-    isInitialised:   false,
+    isOnline:          false,
+    isPostsFetching:   false,
+    isAuthFetching:    false,
+    isInitialised:     false,
+    isProfileEditing:  false,
+    isPasswordEditing: false,
 });
 
 export const uiReducer = (state = initialState, action) => {
@@ -22,6 +24,12 @@ export const uiReducer = (state = initialState, action) => {
 
         case types.SET_AUTH_FETCHING_STATE:
             return state.set('isAuthFetching', action.payload);
+
+        case types.SET_PROFILE_EDITING_STATE:
+            return state.set('isProfileEditing', action.payload);
+
+        case types.SET_PASSWORD_EDITING_STATE:
+            return state.set('isPasswordEditing', action.payload);
 
         default:
             return state;

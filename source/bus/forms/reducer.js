@@ -17,6 +17,17 @@ export const formsReducer = combineForms(
             password: '12345',
             remember: true,
         },
+        user: {
+            profile: {
+                firstName: '',
+                lastName:  '',
+                avatar:    '',
+            },
+            password: {
+                oldPassword: '',
+                newPassword: '',
+            },
+        },
     },
     'forms',
 );
