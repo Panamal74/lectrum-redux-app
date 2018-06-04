@@ -41,4 +41,5 @@ export function* callLoginWorker ({ payload: credentials }) {
     } finally {
         yield put(uiActions.setAuthFetchingState(false));
     }
+
 }
