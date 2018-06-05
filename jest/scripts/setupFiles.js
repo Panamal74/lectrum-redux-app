@@ -28,6 +28,7 @@ const responseDataSuccess = {
 
 const responseDataFail = {
     message: errorMessage,
+    data:    '',
 };
 
 const fetchResponseSuccess = {

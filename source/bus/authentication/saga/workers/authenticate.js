@@ -20,6 +20,8 @@ export function* callAuthenticateWorker ({ payload: token }) {
         // const { data: posts, message } = response.json();
         const { data: profile, message } = yield call([response, response.json]);
 
+        yield delay(500);
+
         if (response.status !== 200) {
             if (response.status === 401) {
                 yield localStorage.removeItem('token');
@@ -28,8 +30,6 @@ export function* callAuthenticateWorker ({ payload: token }) {
             }
             throw new Error(message);
         }
-
-        delay(500);
 
         yield put(authActions.authenticateSuccess());
 
