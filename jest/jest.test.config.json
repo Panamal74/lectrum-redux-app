@@ -8,9 +8,13 @@
     "collectCoverage": true,
     "collectCoverageFrom": [
         "<rootDir>/source/bus/authentication/*.{js,jsx}",
-        "<rootDir>/source/bus/ui/*.{js,jsx}",
+        "<rootDir>/source/bus/forms/*.{js,jsx}",
+        "<rootDir>/source/bus/notification/*.{js,jsx}",
         "<rootDir>/source/bus/posts/*.{js,jsx}",
         "<rootDir>/source/bus/profile/*.{js,jsx}",
+        "<rootDir>/source/bus/socket/*.{js,jsx}",
+        "<rootDir>/source/bus/ui/*.{js,jsx}",
+        "<rootDir>/source/bus/users/*.{js,jsx}",
         "<rootDir>/source/init/store.js"
     ],
     "coveragePathIgnorePatterns": [

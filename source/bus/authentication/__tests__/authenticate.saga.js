@@ -29,4 +29,52 @@ describe('authenticate saga', () => {
         // should call INITIALISE_SUCCESS
         expect(clone.next().value).toMatchSnapshot();
     });
+
+    test('should handle !== 200 response status', () => {
+        const clone = saga.clone();
+
+        const responseStatus400 = { ...__.fetchResponseFail, status: 400 };
+
+        // should yield transformed data
+        expect(clone.next(responseStatus400).value).toMatchSnapshot();
+
+        // should yield delay
+        expect(clone.next(__.responseDataFail).value).toMatchSnapshot();
+
+        // should put authenticateFail
+        expect(clone.next().value).toMatchSnapshot();
+
+        // should put initializeSuccess
+        expect(clone.next().value).toMatchSnapshot();
+
+        // should finish
+        expect(clone.next().done).toBe(true);
+    });
+
+    test('shuold complete successfully', () => {
+        // should yield transformed json
+        expect(saga.next(__.fetchResponseSuccess).value).toMatchSnapshot();
+
+        // should yield delay
+        expect(saga.next(__.responseDataSuccess).value).toMatchSnapshot();
+
+        // should yield authenticateSuccess
+        expect(saga.next().value).toMatchSnapshot();
+
+        // should yield fillProfile
+        expect(saga.next().value).toMatchSnapshot();
+
+        // should yield react-redux-form change to forms.user.profile.firstName
+        expect(saga.next().value).toMatchSnapshot();
+
+        // should yield react-redux-form change to forms.user.profile.lastName
+        expect(saga.next().value).toMatchSnapshot();
+
+        // should yield initialise
+        expect(saga.next().value).toMatchSnapshot();
+
+        // should finish
+        expect(saga.next().done).toBe(true);
+
+    });
 });

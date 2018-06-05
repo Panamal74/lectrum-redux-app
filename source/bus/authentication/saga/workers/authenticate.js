@@ -33,7 +33,7 @@ export function* callAuthenticateWorker ({ payload: token }) {
 
         yield put(authActions.authenticateSuccess());
 
-        yield localStorage.setItem('token', profile.token);
+        // yield localStorage.setItem('token', profile.token);
         yield put(profileActions.fillProfile(profile));
         yield put(actions.change('forms.user.profile.firstName', profile.firstName));
         yield put(actions.change('forms.user.profile.lastName', profile.lastName));
